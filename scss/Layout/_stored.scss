@@ -1,0 +1,23 @@
+// --------------------------------------------------------------------------
+// Stored Images ------------------------------------------------------------
+// --------------------------------------------------------------------------
+
+.stored {
+    @include flex-row;
+}
+.owl-dots {
+    @include flex-row;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.owl-carousel button.owl-dot {
+    height: 5px;
+    width: 5px;
+    background-color: grey;
+    border-radius: 50%;
+    margin-right: 5px;
+    &.active {
+        background-color: darken(grey, 10%);
+    }
+}

@@ -1,0 +1,60 @@
+
+// Media queries
+
+@mixin mq($break) {
+  @if $break =="small" {
+    @media screen and (min-width: $brkpoint-sm) and (max-width: $brkpoint-md) {
+      @content;
+    }
+  } @else if $break == "medium" {
+    @media screen and (min-width: ($brkpoint-md + 1)) {
+      @content;
+    }
+  } @else if $break == "large" {
+    @media screen and (min-width: $brkpoint-lg) {
+      @content;
+    }
+  } @else if $break == "x-large" {
+      @media screen and (min-width: $brkpoint-xlg) {
+        @content;
+      }
+  } @else if $break == "xx-large" {
+    @media screen and (min-width: $brkpoint-xxlg) {
+      @content;
+    }
+  } @else {
+    @error "Whoopsie"; 
+  }
+}
+
+@mixin collapse {
+  display: none;
+  padding: 0;
+  height: 0;
+  margin: 0;
+  line-height: 0;
+  width: 0;
+}
+
+//auto margins to center content horizontally
+@mixin auto-mg-hor {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+//auto margins to center content vertically 
+@mixin auto-mg-ver {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+//mild time saver for flexboxes
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
