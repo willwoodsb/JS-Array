@@ -4,6 +4,8 @@
 const $card = $('.card'); 
 const $stored = $('.stored'); 
 const $storeBtn = $('#store-button');
+let currentEmailIndex;
+let emailList = [];
 
 //Image variables
 const width = 300, height = 300;
@@ -17,7 +19,6 @@ let storing = false;
 //email variables
 const $email = $('input[type = email]');
 const $emailBtn = $('input[type = submit]');
-let emailList = [];
 const $dropdown = $('#dropdown');
 
 $(document).ready(function() {
@@ -145,17 +146,21 @@ function validateEmail(userInput) {
   } else {
     //check if submission is a duplicate
     let emailDuplicate = false;
-    for (let k=0; k < emailList.length + 1; k++) {
-      if (userInput == emailList[k]) {
+    for (let j=0; j < emailList.length + 1; j++) {
+      if (userInput == emailList[j]) {
         emailDuplicate = true;
       }
     }
     if (!emailDuplicate) {
+      let newEmailObject = new Email(userInput, [], []);
+
       if (emailList.length == 0) {
         $('select option').remove();
+        currentEmailIndex = 0;
       }
-      emailList.push(userInput);
+      //add the new email to the dropdown then add the new email object to email object array
       addEmail(userInput);
+      emailList.push(newEmailObject);
     } else {
       $(`#preExisting`).css('display', 'block');
     }
@@ -178,7 +183,13 @@ function addEmail(userInput) {
 // ------------------------------------------
 
 $dropdown.on('change', function() {
-  console.log('yes');
+  //when the dropdown selection is changed, change the 
+  //currentEmailIndex to the correct value
+  for (let j=0; j<emailList.length; j++) {
+    if (emailList[j].value === $dropdown.val()) {
+      currentEmailIndex = j;
+    }
+  }
 })
 
 $storeBtn.click(function() {
@@ -194,6 +205,18 @@ $emailBtn.click(function() {
 $email.on('change', function (event) {
   $('.email-invalid').css('display', 'none');
 });
+
+// ------------------------------------------
+//  CLASSES
+// ------------------------------------------
+
+class Email {
+  constructor( value, Urls, codes ) {
+    this.value = value;
+    this.Urls = Urls;
+    this.codes = codes;
+  }
+}
 
 
 
