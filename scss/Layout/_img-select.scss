@@ -1,0 +1,44 @@
+// --------------------------------------------------------------------------
+// img-select ---------------------------------------------------------------
+// --------------------------------------------------------------------------
+
+.img-select {
+    height: calc(100vh - 20px);
+    padding: 20px;
+    @include flex-col;
+    width: $width + 40;
+    left: 0;
+    position: fixed;
+    h1 {
+        color: white;
+        margin-top: 0;
+        text-align: center;
+        
+    }
+    #drop-form, #input-email {
+        height: 35px;
+        @include flex-row;
+        justify-content: space-between;
+        input[type=email], select {
+            width: 190px;
+        }
+        &:first-child {
+            flex-grow: 1;
+        }
+        &:last-child {
+            flex-grow: 0;
+        }
+    }
+    #drop-form {
+        margin-bottom: 20px;
+        margin-top: 5px;
+    }
+    button, input[type=submit] {
+        width: 100px;
+        border-radius: 4px;
+        background-color: $blue;
+        color: white;
+        border: 2px solid white;
+        padding:5px;
+    }
+}

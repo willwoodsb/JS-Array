@@ -1,24 +1,36 @@
 // --------------------------------------------------------------------------
 // Stored Images ------------------------------------------------------------
 // --------------------------------------------------------------------------
-
-.stored {
-    background-color: rgba(10,10,10,1);
-    padding: 10px;
+.theme {
+    background-color: $theme;
     border-radius: 5px;
     display: block;
-    width: $width;
     margin: 10px;
     position: relative;
+    box-shadow: 0 0 10px rgba(255, 255, 255, .02);
+    border: 1px solid rgba(255, 255, 255, .2);
+}
+.stored {
+    padding: 10px;
+    width: ($width + 20);
+    height: 365px;
+    
+    
     p {
         margin: 0;
         color: white;
-        text-align: center;
+        @include flex-row;
+        justify-content: center;
+        span {
+            transform: translate(0, 1px);
+            font-size: 16px;
+            color: white;
+            margin-right: 5px;
+        }
         margin-bottom: 7px;
-        margin-left: 5px;
         font-size: 13px;
-        &::before {
-            content: "";
+        span::before {
+            content: "\e971";
         }
     }
     .edit {
@@ -26,11 +38,11 @@
         border: none;
         color: white;
         position: absolute;
-        top: 3px;
+        top: 2px;
         right: 5px;
     }
-    img {
-        box-shadow: 0 0 3px rgba(255, 255, 255, 0.1);
+    .owl-stage-outer {
+        box-shadow: 0 0 5px rgba(255, 255, 255, .1);
     }
 }
 
@@ -52,7 +64,17 @@
     }
 }
 #stored-grid {
-    @include flex-row;
-    justify-content: center;
-    flex-wrap: wrap;
+
+    width: calc(100vw - 360px);
+    height: 100%;
+    overflow-y: scroll;
+    right: 0;
+    position: fixed;
+    padding: 20px 10px;
+    &-inner {
+        @include flex-row;
+        flex-wrap: wrap;
+        max-width: 1040px;
+        @include auto-mg-hor;
+    }
 }

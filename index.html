@@ -7,26 +7,37 @@
   <link rel="stylesheet" href="owl-carousel/owl.carousel.min.css">
   <link rel="stylesheet" href="css/application.css">
 </head>
-<body>
-  <div class="width">
-    <div class="card"></div>
+<body class="background">
+  <header></header>
+  <main>
+    <div class="wrapper">
+      <div class="img-select theme">
+        <h1>New Photo</h1>
 
-    <!-- Email addition -->
-    <div>
-      <select id="dropdown">
-        <option value="" disabled selected hidden>Choose an email...</option>
-      </select>
-      <button type="button" id="store-button" class="greyed">Store Image</button>
-    </div>
-    <div id="input-email">
-      <input type="email" id="email" name="email" placeholder="Email Address" required>
-      <input type="submit" value="Submit">
-      <p class="email-invalid" id="reject">Please enter a valid email</p>
-      <p class="email-invalid" id="preExisting">This email has already been submitted</p>
-    </div>
+        <!-- Email addition -->
+        <div id="input-email">
+          <input type="email" id="email" name="email" placeholder="Email Address" required>
+          <input type="submit" value="Submit">
+        </div>
+        <p class="email-invalid" id="reject">Please enter a valid email</p>
+        <p class="email-invalid" id="preExisting">This email has already been submitted</p>
+        <div id="drop-form">
+          <select id="dropdown">
+            <option value="" disabled selected hidden>Choose an email...</option>
+          </select>
+          <button type="button" id="store-button" class="greyed">Add</button>
+        </div>
+        <p class="email-invalid" id="no-email">Please provide a valid email</p>
+        <div class="card"></div>
+      </div>
 
-    <section id="stored-grid"></section>
-  </div>
+      <section id="stored-grid">
+        <div id="stored-grid-inner"></div>
+      </section>
+    </div>
+  </main>
+  <footer></footer>
+  
   
   <script
       src="https://code.jquery.com/jquery-3.6.3.min.js"

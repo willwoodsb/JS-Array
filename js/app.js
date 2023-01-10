@@ -187,9 +187,9 @@ function addEmail(userInput) {
 //function to create a new div for each new email
 function createStoreDiv(emailIndex) {
   //create html 
-  $('#stored-grid').prepend(`
-    <div class="stored">
-      <p>${emailList[emailIndex].value}</p>
+  $('#stored-grid-inner').prepend(`
+    <div class="stored theme">
+      <p><span class="icon"></span>${emailList[emailIndex].value}</p>
       <button type="button" class="edit">...</button>
       <div class="owl-carousel" id="stored-${emailIndex}"></div>
     </div>
@@ -216,9 +216,11 @@ $dropdown.on('change', function() {
 })
 
 $storeBtn.click(function() {
-  if (!loading && !storing) {
+  if (!loading && !storing && !$storeBtn.hasClass('greyed')) {
     storeImage();
-  } 
+  } else if ($storeBtn.hasClass('greyed')) {
+    $('#no-email').css('display', 'block');
+  }
 })
 
 $emailBtn.click(function() {

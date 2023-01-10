@@ -2,12 +2,35 @@
 // global helpers -----------------------------------------------------------
 // --------------------------------------------------------------------------
 
+//fonts
+
+$font-url--google        : 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap';
+$font-family--primary    : 'Poppins', sans-serif;
+$font-family--secondary  :  sans-serif;
+$font-family--icon       :  'fonts/IconMoon-Free.ttf';
+
+// Font Weights
+
+$font-weight--thin       : 300;
+$font-weight--light      : 400;
+$font-weight--medium     : 500;
+$font-weight--bold       : 700;
+$font-weight--ultra-bold : 900;
+
+// Text
+
+$font-size--xsmall:10px;
+$font-size--small: 13px;
+$base__font-size : 16px;
+$base__line      : 24px;
+$letter-space    : 0.4px;
+
 $width: 300px;
 
 
 $grey: #88898A;
-$theme: #435060;
-$blue: #0078BF;
+$theme: darken(#435060, 25%);
+$blue: #4982CF;
 
 
 $loading-color : $blue;

@@ -184,32 +184,80 @@ td,
 th {
   padding: 0; }
 
-.stored {
-  background-color: #0a0a0a;
-  padding: 10px;
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+body {
+  font-weight: 400;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.5;
+  letter-spacing: 0.4px; }
+
+@font-face {
+  font-family: 'IcoMoon-Free';
+  src: url("../fonts/IcoMoon-Free.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'IcoMoon-Free' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  -o-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.theme {
+  background-color: #0f1115;
   border-radius: 5px;
   display: block;
-  width: 300px;
   margin: 10px;
-  position: relative; }
+  position: relative;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.2); }
+
+.stored {
+  padding: 10px;
+  width: 320px;
+  height: 365px; }
   .stored p {
     margin: 0;
     color: white;
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     margin-bottom: 7px;
-    margin-left: 5px;
     font-size: 13px; }
-    .stored p::before {
-      content: ""; }
+    .stored p span {
+      transform: translate(0, 1px);
+      font-size: 16px;
+      color: white;
+      margin-right: 5px; }
+    .stored p span::before {
+      content: "\e971"; }
   .stored .edit {
     background: none;
     border: none;
     color: white;
     position: absolute;
-    top: 3px;
+    top: 2px;
     right: 5px; }
-  .stored img {
-    box-shadow: 0 0 3px rgba(255, 255, 255, 0.1); }
+  .stored .owl-stage-outer {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1); }
 
 .owl-dots {
   display: flex;
@@ -225,17 +273,56 @@ th {
   margin-right: 5px;
   z-index: 10; }
   .owl-carousel button.owl-dot.active {
-    background-color: #0078BF; }
+    background-color: #4982CF; }
 
 #stored-grid {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap; }
+  width: calc(100vw - 360px);
+  height: 100%;
+  overflow-y: scroll;
+  right: 0;
+  position: fixed;
+  padding: 20px 10px; }
+  #stored-grid-inner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 1040px;
+    margin-left: auto;
+    margin-right: auto; }
 
-.greyed {
-  background-color: grey;
-  pointer-events: none; }
+.img-select {
+  height: calc(100vh - 20px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+  left: 0;
+  position: fixed; }
+  .img-select h1 {
+    color: white;
+    margin-top: 0;
+    text-align: center; }
+  .img-select #drop-form, .img-select #input-email {
+    height: 35px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; }
+    .img-select #drop-form input[type=email], .img-select #drop-form select, .img-select #input-email input[type=email], .img-select #input-email select {
+      width: 190px; }
+    .img-select #drop-form:first-child, .img-select #input-email:first-child {
+      flex-grow: 1; }
+    .img-select #drop-form:last-child, .img-select #input-email:last-child {
+      flex-grow: 0; }
+  .img-select #drop-form {
+    margin-bottom: 20px;
+    margin-top: 5px; }
+  .img-select button, .img-select input[type=submit] {
+    width: 100px;
+    border-radius: 4px;
+    background-color: #4982CF;
+    color: white;
+    border: 2px solid white;
+    padding: 5px; }
 
 .lds-dual-ring {
   display: inline-block;
@@ -249,8 +336,8 @@ th {
   height: 64px;
   margin: 8px;
   border-radius: 50%;
-  border: 6px solid #0078BF;
-  border-color: #0078BF transparent #0078BF transparent;
+  border: 6px solid #4982CF;
+  border-color: #4982CF transparent #4982CF transparent;
   animation: lds-dual-ring 1.2s linear infinite; }
 
 @keyframes lds-dual-ring {
@@ -286,5 +373,14 @@ th {
       max-width: 1170px;
       margin-left: auto;
       margin-right: auto; } }
+
+.background {
+  background-color: #1d232a; }
+
+.greyed {
+  background-color: #88898A !important;
+  color: #bbbcbd !important;
+  border: 1px solid #bbbcbd !important;
+  cursor: pointer; }
 
 /*# sourceMappingURL=application.css.map */
