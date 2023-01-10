@@ -9,7 +9,7 @@ let emailList = [];
 
 //Image variables
 const width = 300, height = 300;
-let imgUrl = [];
+let imgUrl = []; //all urls used
 let imgCodes = [];
 let i = 0;
 let displayItems = 1;
@@ -24,13 +24,6 @@ const $dropdown = $('#dropdown');
 $(document).ready(function() {
   //when document is ready load first pic
   fetchPic(width, height, i);
-
-  //owl-carousel
-  $('.stored').owlCarousel({
-    items: displayItems,
-  });
-  //make stored div same width as photo
-  $stored.css('width', width);
 });
 
 
@@ -126,9 +119,22 @@ function generateErrorText(error, i) {
 function storeImage() {
   $(`#img_${i}`).fadeOut(200);
   storing = true;
+
+  //if the selected email is new, create a div for it 
+  if (emailList[currentEmailIndex].Urls.length === 0) {
+    createStoreDiv(currentEmailIndex);
+  }
+  //add the url to the email opbject
+  emailList[currentEmailIndex].Urls.push(imgUrl[i]);
+
+  //run this code after the animations have finished
   setTimeout(function() {
-    $('.stored').trigger('add.owl.carousel', [$(`#img_${i}`), 0]).trigger('refresh.owl.carousel');
+    //make new oel-carousel element and add the image to it
+    $(`#stored-${currentEmailIndex}`).trigger('add.owl.carousel', [$(`#img_${i}`), 0]).trigger('refresh.owl.carousel');
     $(`#img_${i}`).fadeIn(350);
+
+    //increase global img counter by 1 and fetch a new pic from 
+    //unsplash to display at the top
     i++;
     fetchPic(width, height, i);
     setTimeout(function() {
@@ -139,7 +145,7 @@ function storeImage() {
 }
 
 //validate the email submission (against regex and previous submission)
-function validateEmail(userInput) {
+function createEmail(userInput) {
   let emailRegex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
   if (!emailRegex.test(userInput)) {
     $(`#reject`).css('display', 'block');
@@ -152,7 +158,7 @@ function validateEmail(userInput) {
       }
     }
     if (!emailDuplicate) {
-      let newEmailObject = new Email(userInput, [], []);
+      let newEmailObject = new Email(userInput, []);
 
       if (emailList.length == 0) {
         $('select option').remove();
@@ -168,6 +174,7 @@ function validateEmail(userInput) {
   };
 }
 
+//function to add an email to the dropdown menu
 function addEmail(userInput) {
   $dropdown.prepend(`
     <option>${userInput}</option>
@@ -175,6 +182,22 @@ function addEmail(userInput) {
   if($storeBtn.hasClass('greyed')) {
     $storeBtn.removeClass('greyed');
   }
+}
+
+//function to create a new div for each new email
+function createStoreDiv(emailIndex) {
+  //create html 
+  $('#stored-grid').prepend(`
+    <div class="stored">
+      <p>${emailList[emailIndex].value}</p>
+      <button type="button" class="edit">...</button>
+      <div class="owl-carousel" id="stored-${emailIndex}"></div>
+    </div>
+  `);
+  //initialise owl-carousel
+  $(`#stored-${emailIndex}`).owlCarousel({
+    items: displayItems,
+  }).css('width', width);
 }
 
 
@@ -199,7 +222,7 @@ $storeBtn.click(function() {
 })
 
 $emailBtn.click(function() {
-  validateEmail($email.val());
+  createEmail($email.val());
 })
 
 $email.on('change', function (event) {
@@ -210,11 +233,11 @@ $email.on('change', function (event) {
 //  CLASSES
 // ------------------------------------------
 
+//class that contains the urls for each new email object
 class Email {
   constructor( value, Urls, codes ) {
     this.value = value;
     this.Urls = Urls;
-    this.codes = codes;
   }
 }
 

@@ -1,0 +1,19 @@
+// --------------------------------------------------------------------------
+// width --------------------------------------------------------------------
+// --------------------------------------------------------------------------
+
+.width {
+    margin: 0 25px;
+    @include mq(large) {
+        max-width: 720px;
+        @include auto-mg-hor;
+    }
+    @include mq(x-large) {
+        max-width: 940px;
+        @include auto-mg-hor;
+    }
+    @include mq(xx-large) {
+        max-width: 1170px;
+        @include auto-mg-hor;
+    }
+}

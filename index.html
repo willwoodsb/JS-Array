@@ -8,23 +8,25 @@
   <link rel="stylesheet" href="css/application.css">
 </head>
 <body>
-  <div class="card"></div>
+  <div class="width">
+    <div class="card"></div>
 
-  <!-- Email addition -->
-  <div>
-    <select id="dropdown">
-      <option value="" disabled selected hidden>Choose an email...</option>
-    </select>
-    <button type="button" id="store-button" class="greyed">Store Image</button>
-  </div>
-  <div id="input-email">
-    <input type="email" id="email" name="email" placeholder="Email Address" required>
-    <input type="submit" value="Submit">
-    <p class="email-invalid" id="reject">Please enter a valid email</p>
-    <p class="email-invalid" id="preExisting">This email has already been submitted</p>
-  </div>
+    <!-- Email addition -->
+    <div>
+      <select id="dropdown">
+        <option value="" disabled selected hidden>Choose an email...</option>
+      </select>
+      <button type="button" id="store-button" class="greyed">Store Image</button>
+    </div>
+    <div id="input-email">
+      <input type="email" id="email" name="email" placeholder="Email Address" required>
+      <input type="submit" value="Submit">
+      <p class="email-invalid" id="reject">Please enter a valid email</p>
+      <p class="email-invalid" id="preExisting">This email has already been submitted</p>
+    </div>
 
-  <div class="stored owl-carousel"></div>
+    <section id="stored-grid"></section>
+  </div>
   
   <script
       src="https://code.jquery.com/jquery-3.6.3.min.js"
