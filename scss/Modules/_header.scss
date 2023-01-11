@@ -1,0 +1,22 @@
+// --------------------------------------------------------------------------
+// Dynamic Header -----------------------------------------------------------
+// --------------------------------------------------------------------------
+
+.header {
+    h1{
+        margin: 20px 10px;
+        text-align: center;
+        color: $white;
+    }
+    margin-top: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    &-inner {
+        margin-top: 0;
+        transition: width .25s ease;
+        &_content {
+            margin: 0 10px;
+        }
+    }
+}

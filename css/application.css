@@ -191,7 +191,7 @@ th {
 body {
   font-weight: 400;
   font-size: 16px;
-  font-family: "Poppins", sans-serif;
+  font-family: "Nunito", sans-serif;
   line-height: 1.5;
   letter-spacing: 0.4px; }
 
@@ -221,13 +221,18 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+h1 {
+  font-size: 30px;
+  font-weight: 900;
+  color: white; }
+
 .theme {
   background-color: #0f1115;
-  border-radius: 5px;
+  border-radius: 10px;
   display: block;
   margin: 10px;
   position: relative;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.02);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.2); }
 
 .stored {
@@ -281,14 +286,11 @@ body {
   overflow-y: scroll;
   right: 0;
   position: fixed;
-  padding: 20px 10px; }
+  padding: 10px 10px; }
   #stored-grid-inner {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    max-width: 1040px;
-    margin-left: auto;
-    margin-right: auto; }
+    flex-wrap: wrap; }
 
 .img-select {
   height: calc(100vh - 20px);
@@ -299,9 +301,10 @@ body {
   left: 0;
   position: fixed; }
   .img-select h1 {
-    color: white;
     margin-top: 0;
-    text-align: center; }
+    text-align: left;
+    font-weight: 500;
+    margin-left: 5px; }
   .img-select #drop-form, .img-select #input-email {
     height: 35px;
     display: flex;
@@ -319,10 +322,18 @@ body {
   .img-select button, .img-select input[type=submit] {
     width: 100px;
     border-radius: 4px;
-    background-color: #4982CF;
+    text-transform: uppercase;
+    border: none;
     color: white;
-    border: 2px solid white;
     padding: 5px; }
+    .img-select button#submit, .img-select input[type=submit]#submit {
+      background-color: #4982CF; }
+      .img-select button#submit:hover, .img-select input[type=submit]#submit:hover {
+        background-color: #3069b5; }
+    .img-select button#store-button, .img-select input[type=submit]#store-button {
+      background-color: #f41f2a; }
+      .img-select button#store-button:hover, .img-select input[type=submit]#store-button:hover {
+        background-color: #d50b15; }
 
 .lds-dual-ring {
   display: inline-block;
@@ -357,30 +368,57 @@ body {
   color: red; }
 
 .width {
-  margin: 0 25px; }
-  @media screen and (min-width: 768px) {
+  margin-left: auto;
+  margin-right: auto; }
+  @media screen and (min-width: 737px) {
     .width {
-      max-width: 720px;
-      margin-left: auto;
-      margin-right: auto; } }
-  @media screen and (min-width: 992px) {
+      width: 340px; } }
+  @media screen and (min-width: 1077px) {
     .width {
-      max-width: 940px;
-      margin-left: auto;
-      margin-right: auto; } }
-  @media screen and (min-width: 1260px) {
+      width: 680px; } }
+  @media screen and (min-width: 1417px) {
     .width {
-      max-width: 1170px;
-      margin-left: auto;
-      margin-right: auto; } }
+      width: 1020px; } }
+
+.width-1 {
+  margin-left: auto;
+  margin-right: auto; }
+  @media screen and (min-width: 737px) {
+    .width-1 {
+      width: 340px; } }
+
+.width-2 {
+  margin-left: auto;
+  margin-right: auto; }
+  @media screen and (min-width: 737px) {
+    .width-2 {
+      width: 340px; } }
+  @media screen and (min-width: 1077px) {
+    .width-2 {
+      width: 680px; } }
 
 .background {
-  background-color: #1d232a; }
+  background-color: #242a33; }
 
 .greyed {
-  background-color: #88898A !important;
-  color: #bbbcbd !important;
-  border: 1px solid #bbbcbd !important;
-  cursor: pointer; }
+  background-color: #a2a3a3 !important;
+  color: #d5d6d6 !important;
+  border: 1px solid #d5d6d6 !important;
+  pointer-events: none; }
+
+.header {
+  margin-top: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px; }
+  .header h1 {
+    margin: 20px 10px;
+    text-align: center;
+    color: white; }
+  .header-inner {
+    margin-top: 0;
+    transition: width .25s ease; }
+    .header-inner_content {
+      margin: 0 10px; }
 
 /*# sourceMappingURL=application.css.map */

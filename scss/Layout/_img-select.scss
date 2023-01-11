@@ -10,10 +10,10 @@
     left: 0;
     position: fixed;
     h1 {
-        color: white;
         margin-top: 0;
-        text-align: center;
-        
+        text-align: left;
+        font-weight: 500;
+        margin-left: 5px;
     }
     #drop-form, #input-email {
         height: 35px;
@@ -36,9 +36,21 @@
     button, input[type=submit] {
         width: 100px;
         border-radius: 4px;
-        background-color: $blue;
+        text-transform: uppercase;
+        border: none;
+        &#submit {
+            background-color: $blue;
+            &:hover {
+                background-color: darken($blue, 10%);
+            }
+        }
+        &#store-button {
+            background-color: $gold;
+            &:hover {
+                background-color: darken($gold, 10%);
+            }
+        }
         color: white;
-        border: 2px solid white;
         padding:5px;
     }
 }

@@ -3,17 +3,31 @@
 // --------------------------------------------------------------------------
 
 .width {
-    margin: 0 25px;
-    @include mq(large) {
-        max-width: 720px;
-        @include auto-mg-hor;
+    @media screen and (min-width: 737px) {
+        width: 340px;
     }
-    @include mq(x-large) {
-        max-width: 940px;
-        @include auto-mg-hor;
+    @media screen and (min-width: 1077px) {
+        width: 680px;
     }
-    @include mq(xx-large) {
-        max-width: 1170px;
-        @include auto-mg-hor;
+    @media screen and (min-width: 1417px) {
+        width: 1020px;
     }
+    @include auto-mg-hor;
+}
+
+.width-1 {
+    @media screen and (min-width: 737px) {
+        width: 340px;
+    }
+    @include auto-mg-hor;
+}
+
+.width-2 {
+    @media screen and (min-width: 737px) {
+        width: 340px;
+    }
+    @media screen and (min-width: 1077px) {
+        width: 680px;
+    }
+    @include auto-mg-hor;
 }

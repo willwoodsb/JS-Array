@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>JS-Array</title>
-  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans:400,700" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="owl-carousel/owl.carousel.min.css">
   <link rel="stylesheet" href="css/application.css">
 </head>
@@ -17,7 +19,7 @@
         <!-- Email addition -->
         <div id="input-email">
           <input type="email" id="email" name="email" placeholder="Email Address" required>
-          <input type="submit" value="Submit">
+          <input type="submit" value="Submit" id="submit">
         </div>
         <p class="email-invalid" id="reject">Please enter a valid email</p>
         <p class="email-invalid" id="preExisting">This email has already been submitted</p>
@@ -32,7 +34,12 @@
       </div>
 
       <section id="stored-grid">
-        <div id="stored-grid-inner"></div>
+        <div class="header">
+          <div class="header-inner width-1">
+            <div class="header-inner_content theme"><h1>JS Photo Array</h1></div>
+          </div>
+        </div>
+        <div id="stored-grid-inner" class="width-1"></div>
       </section>
     </div>
   </main>

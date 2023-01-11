@@ -198,6 +198,11 @@ function createStoreDiv(emailIndex) {
   $(`#stored-${emailIndex}`).owlCarousel({
     items: displayItems,
   }).css('width', width);
+  if (emailIndex == 1) {
+    $('.header-inner, #stored-grid-inner').removeClass('width-1').addClass('width-2');
+  } else if (emailIndex == 2 ) {
+    $('.header-inner, #stored-grid-inner').removeClass('width-2').addClass('width');
+  }
 }
 
 

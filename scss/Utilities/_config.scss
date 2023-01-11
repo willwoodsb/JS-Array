@@ -4,8 +4,8 @@
 
 //fonts
 
-$font-url--google        : 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap';
-$font-family--primary    : 'Poppins', sans-serif;
+$font-url--google        : 'https://fonts.googleapis.com/css2?family=Nunito&display=swap';
+$font-family--primary    : 'Nunito', sans-serif;
 $font-family--secondary  :  sans-serif;
 $font-family--icon       :  'fonts/IconMoon-Free.ttf';
 
@@ -27,10 +27,11 @@ $letter-space    : 0.4px;
 
 $width: 300px;
 
-
+$white: white;
 $grey: #88898A;
 $theme: darken(#435060, 25%);
 $blue: #4982CF;
+$gold: darken(#F65058, 10%);
 
 
 $loading-color : $blue;
