@@ -434,18 +434,19 @@ h1 {
   margin-bottom: 10px; }
   .header h1 {
     margin: 20px 10px;
-    text-align: center; }
+    padding-left: 20px; }
   .header-inner {
     margin-top: 0;
     transition: width .25s ease; }
     .header-inner_content {
       margin: 0 10px; }
 
-#h1 h1 {
-  width: 340px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px; }
+#h1 {
+  transform: translate(0, -1px); }
+  #h1 h1 {
+    width: 340px;
+    margin-left: auto;
+    margin-right: auto; }
 
 @media screen and (min-width: 737px) {
   #h1 {

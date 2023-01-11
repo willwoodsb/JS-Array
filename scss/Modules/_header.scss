@@ -5,7 +5,7 @@
 .header {
     h1{
         margin: 20px 10px;
-        text-align: center;
+        padding-left: 20px;
     }
     margin-top: 0;
     margin-left: 10px;
@@ -21,10 +21,10 @@
 }
 
 #h1 {
+    transform: translate(0, -1px);
     & h1 {
         width: 340px;
         @include auto-mg-hor;
-        padding-left: 20px;
     }
 }
     

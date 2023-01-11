@@ -193,7 +193,6 @@ function createStoreDiv(emailIndex, theme) {
   } else {
     themeClass = 'theme-dark';
   }
-  console.log(theme, themeClass);
   //create html 
   $('#stored-grid-inner').prepend(`
     <div class="stored theme ${themeClass}">
