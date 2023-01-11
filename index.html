@@ -13,29 +13,34 @@
   <header></header>
   <main>
     <div class="wrapper">
-      <div class="img-select theme">
-        <h1>New Photo</h1>
-
-        <!-- Email addition -->
-        <div id="input-email">
-          <input type="email" id="email" name="email" placeholder="Email Address" required>
-          <input type="submit" value="Submit" id="submit">
+      <div class="header" id="h1">
+          <div class="header-inner_content theme"><h1>JS Photo Array</h1></div>
+      </div>
+      <div class="img-select-outer theme">
+        <div class="img-select">
+          <h1>New Photo</h1>
+  
+          <!-- Email addition -->
+          <div id="input-email">
+            <input type="email" id="email" name="email" placeholder="Email Address" required>
+            <input type="submit" value="Submit" id="submit">
+          </div>
+          <p class="email-invalid" id="reject">Please enter a valid email</p>
+          <p class="email-invalid" id="preExisting">This email has already been submitted</p>
+          <div id="drop-form">
+            <select id="dropdown">
+              <option value="" disabled selected hidden>Choose an email...</option>
+            </select>
+            <button type="button" id="store-button" class="greyed">Add</button>
+          </div>
+          <p class="email-invalid" id="no-email">Please provide a valid email</p>
+          <div class="card"></div>
         </div>
-        <p class="email-invalid" id="reject">Please enter a valid email</p>
-        <p class="email-invalid" id="preExisting">This email has already been submitted</p>
-        <div id="drop-form">
-          <select id="dropdown">
-            <option value="" disabled selected hidden>Choose an email...</option>
-          </select>
-          <button type="button" id="store-button" class="greyed">Add</button>
-        </div>
-        <p class="email-invalid" id="no-email">Please provide a valid email</p>
-        <div class="card"></div>
       </div>
 
       <section id="stored-grid">
         <div class="header">
-          <div class="header-inner width-1">
+          <div class="header-inner width-1" id="h2">
             <div class="header-inner_content theme"><h1>JS Photo Array</h1></div>
           </div>
         </div>

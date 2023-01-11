@@ -20,3 +20,16 @@
         }
     }
 }
+
+//media queries for large screen mode
+@include mq(large) {
+    #h1 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: $brkpoint-lg) {
+    #h2 {
+        display: none;
+    }
+}

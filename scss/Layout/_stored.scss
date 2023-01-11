@@ -3,19 +3,28 @@
 // --------------------------------------------------------------------------
 .theme {
     background-color: $theme;
-    border-radius: 10px;
+    @include mq(large) {
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, .2);
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+    
     display: block;
-    margin: 10px;
+    margin-top: 0;
+    margin-bottom: 10px;
     position: relative;
     box-shadow: 0 0 10px rgba(255, 255, 255, .06);
-    border: 1px solid rgba(255, 255, 255, .2);
+    border-top: 1px solid rgba(255, 255, 255, .2);
+    border-bottom: 1px solid rgba(255, 255, 255, .2);
 }
 .stored {
     padding: 10px;
-    width: ($width + 20);
     height: 365px;
-    
-    
+    &:first-child {
+        margin-top: -10px;
+    }
     p {
         margin: 0;
         color: white;
@@ -65,14 +74,32 @@
 }
 #stored-grid {
 
-    width: calc(100vw - 360px);
-    height: 100%;
-    overflow-y: scroll;
-    right: 0;
-    position: fixed;
-    padding: 10px 10px;
-    &-inner {
-        @include flex-row;
-        flex-wrap: wrap;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.owl-carousel {
+    @include auto-mg-hor;
+}
+
+//media query for large screen mode
+@include mq(large) {
+    #stored-grid {
+        width: calc(100vw - 360px);
+        height: 100%;
+        overflow-y: scroll;
+        right: 0;
+        position: fixed;
+        padding: 10px 10px;
+        &-inner {
+            @include flex-row;
+            flex-wrap: wrap;
+        }
+    }
+    .stored {
+        width: ($width + 20);
+        &:first-child {
+            margin-top: 10px;
+        }
     }
 }

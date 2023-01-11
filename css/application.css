@@ -228,17 +228,26 @@ h1 {
 
 .theme {
   background-color: #0f1115;
-  border-radius: 10px;
   display: block;
-  margin: 10px;
+  margin-top: 0;
+  margin-bottom: 10px;
   position: relative;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.2); }
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+  @media screen and (min-width: 737px) {
+    .theme {
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-top: 10px; } }
 
 .stored {
   padding: 10px;
-  width: 320px;
   height: 365px; }
+  .stored:first-child {
+    margin-top: -10px; }
   .stored p {
     margin: 0;
     color: white;
@@ -281,25 +290,41 @@ h1 {
     background-color: #4982CF; }
 
 #stored-grid {
-  width: calc(100vw - 360px);
-  height: 100%;
-  overflow-y: scroll;
-  right: 0;
-  position: fixed;
-  padding: 10px 10px; }
-  #stored-grid-inner {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap; }
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px; }
 
+.owl-carousel {
+  margin-left: auto;
+  margin-right: auto; }
+
+@media screen and (min-width: 737px) {
+  #stored-grid {
+    width: calc(100vw - 360px);
+    height: 100%;
+    overflow-y: scroll;
+    right: 0;
+    position: fixed;
+    padding: 10px 10px; }
+    #stored-grid-inner {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap; }
+
+  .stored {
+    width: 320px; }
+    .stored:first-child {
+      margin-top: 10px; } }
 .img-select {
-  height: calc(100vh - 20px);
   padding: 20px;
   display: flex;
   flex-direction: column;
   width: 340px;
-  left: 0;
-  position: fixed; }
+  margin-left: auto;
+  margin-right: auto; }
+  .img-select-outer {
+    width: 100%;
+    margin-bottom: 0 !important; }
   .img-select h1 {
     margin-top: 0;
     text-align: left;
@@ -335,6 +360,12 @@ h1 {
       .img-select button#store-button:hover, .img-select input[type=submit]#store-button:hover {
         background-color: #d50b15; }
 
+@media screen and (min-width: 737px) {
+  .img-select-outer {
+    width: 340px;
+    left: 0;
+    position: fixed;
+    height: calc(100vh - 20px); } }
 .lds-dual-ring {
   display: inline-block;
   width: 80px;
@@ -367,35 +398,20 @@ h1 {
   margin: 0;
   color: red; }
 
-.width {
+.width-1, .width, .width-2 {
   margin-left: auto;
   margin-right: auto; }
   @media screen and (min-width: 737px) {
-    .width {
-      width: 340px; } }
-  @media screen and (min-width: 1077px) {
-    .width {
-      width: 680px; } }
-  @media screen and (min-width: 1417px) {
-    .width {
-      width: 1020px; } }
-
-.width-1 {
-  margin-left: auto;
-  margin-right: auto; }
-  @media screen and (min-width: 737px) {
-    .width-1 {
+    .width-1, .width, .width-2 {
       width: 340px; } }
 
-.width-2 {
-  margin-left: auto;
-  margin-right: auto; }
-  @media screen and (min-width: 737px) {
-    .width-2 {
-      width: 340px; } }
-  @media screen and (min-width: 1077px) {
-    .width-2 {
-      width: 680px; } }
+@media screen and (min-width: 1077px) {
+  .width-2, .width {
+    width: 680px; } }
+
+@media screen and (min-width: 1417px) {
+  .width {
+    width: 1020px; } }
 
 .background {
   background-color: #242a33; }
@@ -420,5 +436,12 @@ h1 {
     transition: width .25s ease; }
     .header-inner_content {
       margin: 0 10px; }
+
+@media screen and (min-width: 737px) {
+  #h1 {
+    display: none; } }
+@media screen and (max-width: 737px) {
+  #h2 {
+    display: none; } }
 
 /*# sourceMappingURL=application.css.map */

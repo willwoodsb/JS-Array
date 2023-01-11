@@ -3,12 +3,14 @@
 // --------------------------------------------------------------------------
 
 .img-select {
-    height: calc(100vh - 20px);
+    &-outer {
+        width: 100%;
+        margin-bottom: 0!important;
+    }
     padding: 20px;
     @include flex-col;
     width: $width + 40;
-    left: 0;
-    position: fixed;
+    @include auto-mg-hor;
     h1 {
         margin-top: 0;
         text-align: left;
@@ -52,5 +54,17 @@
         }
         color: white;
         padding:5px;
+    }
+}
+
+//media queries for large screen mode
+@include mq(large) {
+    .img-select {
+        &-outer {
+            width: $width + 40;
+            left: 0;
+            position: fixed;
+            height: calc(100vh - 20px);
+        }
     }
 }

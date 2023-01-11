@@ -2,32 +2,22 @@
 // width --------------------------------------------------------------------
 // --------------------------------------------------------------------------
 
-.width {
-    @media screen and (min-width: 737px) {
+
+
+.width-1, .width, .width-2 {
+    @include mq(large) {
         width: 340px;
     }
-    @media screen and (min-width: 1077px) {
+    @include auto-mg-hor;
+}
+
+.width-2, .width {
+    @include mq(x-large) {
         width: 680px;
     }
-    @media screen and (min-width: 1417px) {
+}
+.width {
+    @include mq(xx-large) {
         width: 1020px;
     }
-    @include auto-mg-hor;
-}
-
-.width-1 {
-    @media screen and (min-width: 737px) {
-        width: 340px;
-    }
-    @include auto-mg-hor;
-}
-
-.width-2 {
-    @media screen and (min-width: 737px) {
-        width: 340px;
-    }
-    @media screen and (min-width: 1077px) {
-        width: 680px;
-    }
-    @include auto-mg-hor;
 }
