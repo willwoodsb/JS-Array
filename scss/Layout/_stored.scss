@@ -2,7 +2,18 @@
 // Stored Images ------------------------------------------------------------
 // --------------------------------------------------------------------------
 .theme {
-    background-color: $theme;
+    &-light {
+        &:not(h1, p, span) {
+            background-color: $white;
+        }
+        color: $theme;
+    }
+    &-dark {
+        &:not(h1, p, span) {
+            background-color: $theme;
+        }
+        color: $white;
+    }
     @include mq(large) {
         border-radius: 10px;
         border: 1px solid rgba(255, 255, 255, .2);
@@ -27,13 +38,11 @@
     }
     p {
         margin: 0;
-        color: white;
         @include flex-row;
         justify-content: center;
         span {
             transform: translate(0, 1px);
             font-size: 16px;
-            color: white;
             margin-right: 5px;
         }
         margin-bottom: 7px;
@@ -45,7 +54,6 @@
     .edit {
         background: none;
         border: none;
-        color: white;
         position: absolute;
         top: 2px;
         right: 5px;
@@ -64,7 +72,7 @@
 .owl-carousel button.owl-dot {
     height: 5px;
     width: 5px;
-    background-color: white;
+    background-color: darken($white, 30%);
     border-radius: 50%;
     margin-right: 5px;
     z-index: 10;

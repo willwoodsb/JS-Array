@@ -9,16 +9,26 @@
   <link rel="stylesheet" href="owl-carousel/owl.carousel.min.css">
   <link rel="stylesheet" href="css/application.css">
 </head>
-<body class="background">
+<body class="background-light">
   <header></header>
   <main>
     <div class="wrapper">
-      <div class="header" id="h1">
-          <div class="header-inner_content theme"><h1>JS Photo Array</h1></div>
-      </div>
-      <div class="img-select-outer theme">
+      <div class=" theme theme-light" id="h1"><h1>JS Photo Array</h1></div>
+
+      <div class="img-select-outer theme theme-light">
         <div class="img-select">
-          <h1>New Photo</h1>
+          <div id="new-photo">
+            <div class="new-photo__child"><h1>New Photo</h1></div>
+            <div id="color-theme" class="new-photo__child">
+              <!-- Rounded switch -->
+              <span class="icon theme-light"></span>
+              <label class="switch">
+                <input id="checkbox" type="checkbox">
+                <span class="slider round"></span>
+              </label>
+              <span class="icon theme-light"></span>
+            </div>
+          </div>
   
           <!-- Email addition -->
           <div id="input-email">
@@ -41,7 +51,7 @@
       <section id="stored-grid">
         <div class="header">
           <div class="header-inner width-1" id="h2">
-            <div class="header-inner_content theme"><h1>JS Photo Array</h1></div>
+            <div class="header-inner_content theme theme-light"><h1 class="theme-light">JS Photo Array</h1></div>
           </div>
         </div>
         <div id="stored-grid-inner" class="width-1"></div>

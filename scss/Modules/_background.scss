@@ -1,4 +1,7 @@
-.background {
+.background-dark {
     background-color: lighten($theme, 10%);
+}
+.background-light {
+    background-color: darken($white, 15%);
 }
 

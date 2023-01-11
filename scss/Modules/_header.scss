@@ -6,7 +6,6 @@
     h1{
         margin: 20px 10px;
         text-align: center;
-        color: $white;
     }
     margin-top: 0;
     margin-left: 10px;
@@ -20,6 +19,15 @@
         }
     }
 }
+
+#h1 {
+    & h1 {
+        width: 340px;
+        @include auto-mg-hor;
+        padding-left: 20px;
+    }
+}
+    
 
 //media queries for large screen mode
 @include mq(large) {

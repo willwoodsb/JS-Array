@@ -223,11 +223,9 @@ body {
 
 h1 {
   font-size: 30px;
-  font-weight: 900;
-  color: white; }
+  font-weight: 900; }
 
 .theme {
-  background-color: #0f1115;
   display: block;
   margin-top: 0;
   margin-bottom: 10px;
@@ -235,6 +233,14 @@ h1 {
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.06);
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+  .theme-light {
+    color: #13161b; }
+    .theme-light:not(h1, p, span) {
+      background-color: #f7f7f7; }
+  .theme-dark {
+    color: #f7f7f7; }
+    .theme-dark:not(h1, p, span) {
+      background-color: #13161b; }
   @media screen and (min-width: 737px) {
     .theme {
       border-radius: 10px;
@@ -250,7 +256,6 @@ h1 {
     margin-top: -10px; }
   .stored p {
     margin: 0;
-    color: white;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -259,14 +264,12 @@ h1 {
     .stored p span {
       transform: translate(0, 1px);
       font-size: 16px;
-      color: white;
       margin-right: 5px; }
     .stored p span::before {
       content: "\e971"; }
   .stored .edit {
     background: none;
     border: none;
-    color: white;
     position: absolute;
     top: 2px;
     right: 5px; }
@@ -282,7 +285,7 @@ h1 {
 .owl-carousel button.owl-dot {
   height: 5px;
   width: 5px;
-  background-color: white;
+  background-color: #ababab;
   border-radius: 50%;
   margin-right: 5px;
   z-index: 10; }
@@ -327,9 +330,8 @@ h1 {
     margin-bottom: 0 !important; }
   .img-select h1 {
     margin-top: 0;
-    text-align: left;
-    font-weight: 500;
-    margin-left: 5px; }
+    margin-bottom: 0;
+    font-weight: 500; }
   .img-select #drop-form, .img-select #input-email {
     height: 35px;
     display: flex;
@@ -413,8 +415,11 @@ h1 {
   .width {
     width: 1020px; } }
 
-.background {
-  background-color: #242a33; }
+.background-dark {
+  background-color: #282f39; }
+
+.background-light {
+  background-color: #d1d1d1; }
 
 .greyed {
   background-color: #a2a3a3 !important;
@@ -429,13 +434,18 @@ h1 {
   margin-bottom: 10px; }
   .header h1 {
     margin: 20px 10px;
-    text-align: center;
-    color: white; }
+    text-align: center; }
   .header-inner {
     margin-top: 0;
     transition: width .25s ease; }
     .header-inner_content {
       margin: 0 10px; }
+
+#h1 h1 {
+  width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px; }
 
 @media screen and (min-width: 737px) {
   #h1 {
@@ -443,5 +453,82 @@ h1 {
 @media screen and (max-width: 737px) {
   #h2 {
     display: none; } }
+/* The switch - the box around the slider */
+#new-photo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 10px 5px 15px; }
+
+#color-theme {
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: 0;
+  margin-top: 12px; }
+  #color-theme p {
+    color: #f7f7f7;
+    margin: 0 5px; }
+  #color-theme .icon:first-child:before {
+    content: "\e9d4";
+    margin-right: 5px; }
+  #color-theme .icon:last-child:before {
+    content: "\e9d5";
+    margin-left: 5px; }
+  #color-theme .icon {
+    transform: translate(0, 2px); }
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20.4px; }
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0; }
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 15.6px;
+  width: 15.6px;
+  left: 2.4px;
+  bottom: 2.4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+input:checked + .slider {
+  background-color: #4982CF; }
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #4982CF; }
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(15.6px);
+  -ms-transform: translateX(15.6px);
+  transform: translateX(15.6px); }
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 20.4px; }
+
+.slider.round:before {
+  border-radius: 50%; }
 
 /*# sourceMappingURL=application.css.map */

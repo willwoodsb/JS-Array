@@ -6,6 +6,7 @@ const $stored = $('.stored');
 const $storeBtn = $('#store-button');
 let currentEmailIndex;
 let emailList = [];
+let dark = false;
 
 //Image variables
 const width = 300, height = 300;
@@ -122,7 +123,7 @@ function storeImage() {
 
   //if the selected email is new, create a div for it 
   if (emailList[currentEmailIndex].Urls.length === 0) {
-    createStoreDiv(currentEmailIndex);
+    createStoreDiv(currentEmailIndex, dark);
   }
   //add the url to the email opbject
   emailList[currentEmailIndex].Urls.push(imgUrl[i]);
@@ -185,10 +186,17 @@ function addEmail(userInput) {
 }
 
 //function to create a new div for each new email
-function createStoreDiv(emailIndex) {
+function createStoreDiv(emailIndex, theme) {
+  let themeClass;
+  if (!theme) {
+    themeClass = 'theme-light';
+  } else {
+    themeClass = 'theme-dark';
+  }
+  console.log(theme, themeClass);
   //create html 
   $('#stored-grid-inner').prepend(`
-    <div class="stored theme">
+    <div class="stored theme ${themeClass}">
       <p><span class="icon"></span>${emailList[emailIndex].value}</p>
       <button type="button" class="edit">...</button>
       <div class="owl-carousel" id="stored-${emailIndex}"></div>
@@ -203,6 +211,22 @@ function createStoreDiv(emailIndex) {
   } else if (emailIndex == 2 ) {
     $('#h2, #stored-grid-inner').removeClass('width-2').addClass('width');
   }
+}
+
+function addTransition(target, time) {
+  $(target).css('transition', `${time}s ease`);
+  setTimeout (function() {
+    $(target).css('transition', ``);
+  }, (time* 1000));
+}
+
+function toDark(target, lightClass, darkClass) {
+  $(target).removeClass(lightClass).addClass(darkClass);
+  addTransition(target, .5);
+}
+function toLight(target, lightClass, darkClass) {
+  $(target).removeClass(darkClass).addClass(lightClass);
+  addTransition(target, .5);
 }
 
 
@@ -234,6 +258,19 @@ $emailBtn.click(function() {
 
 $email.on('change', function (event) {
   $('.email-invalid').css('display', 'none');
+});
+
+$('.switch').change(function() {
+  setTimeout(function() {
+    dark = $('#checkbox').is(':checked');
+    if (dark) {
+      toDark('body', 'background-light', 'background-dark');
+      toDark('.theme, h1, .icon', 'theme-light', 'theme-dark');
+    } else {
+      toLight(`body`, `background-light`, `background-dark`);
+      toLight('.theme, h1, .icon', 'theme-light', 'theme-dark');
+    }
+  }, 10);
 });
 
 // ------------------------------------------
