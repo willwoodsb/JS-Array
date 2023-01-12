@@ -118,6 +118,7 @@ function generateErrorText(error, i) {
 
 //store an image
 function storeImage() {
+  updateEmailIndex();
   $(`#img_${i}`).fadeOut(200);
   storing = true;
 
@@ -161,7 +162,7 @@ function createEmail(userInput) {
     if (!emailDuplicate) {
       let newEmailObject = new Email(userInput, []);
 
-      if (emailList.length == 0) {
+      if ($storeBtn.hasClass('greyed')) {
         $('select option').remove();
         currentEmailIndex = 0;
       }
@@ -178,7 +179,7 @@ function createEmail(userInput) {
 //function to add an email to the dropdown menu
 function addEmail(userInput) {
   $dropdown.prepend(`
-    <option>${userInput}</option>
+    <option id="option-${emailList.length}">${userInput}</option>
   `)
   if($storeBtn.hasClass('greyed')) {
     $storeBtn.removeClass('greyed');
@@ -201,8 +202,6 @@ function createStoreDiv(emailIndex, theme) {
       <div class="owl-carousel" id="stored-${emailIndex}"></div>
       <div class="edit-menu theme">
         <button type="button" class="delete-post" id="delete-${emailIndex}">Delete post</button>
-        <div class="line"></div>
-        <p class="edit-post" id="edit-post-${emailIndex}">Edit post</p>
       </div>
     </div>
   `);
@@ -210,11 +209,36 @@ function createStoreDiv(emailIndex, theme) {
   $(`#stored-${emailIndex}`).owlCarousel({
     items: displayItems,
   }).css('width', width);
-  if (emailIndex == 1) {
-    $('#h2, #stored-grid-inner').removeClass('width-1').addClass('width-2');
-  } else if (emailIndex == 2 ) {
-    $('#h2, #stored-grid-inner').removeClass('width-2').addClass('width');
+
+  resizeHeader();
+}
+
+let prevStored = 0;
+function resizeHeader() {
+  let widthClass;
+  if ($('#h2').hasClass('width')) {
+    widthClass = 'width';
+  } else if ($('#h2').hasClass('width-1')) {
+    widthClass = 'width-1';
+  } else if ($('#h2').hasClass('width-2')) {
+    widthClass = 'width-2';
   }
+  let time = 0;
+  if (prevStored >= $('#stored-grid-inner').children().length) {
+    time = 200;
+  }
+  setTimeout(function() {
+    if ($('#stored-grid-inner').children().length <= 1) {
+      $('#h2, #stored-grid-inner').removeClass(`${widthClass}`).addClass('width-1');
+    } else if ($dropdown.children().length == 2) {
+      $('#h2, #stored-grid-inner').removeClass(`${widthClass}`).addClass('width-2');
+    } else if ($dropdown.children().length >= 3) {
+      $('#h2, #stored-grid-inner').removeClass(`${widthClass}`).addClass('width');
+    }
+  }, time)
+  setTimeout(function() {
+    prevStored = $('#stored-grid-inner').children().length;
+  }, 210)
 }
 
 function addTransition(target, time) {
@@ -229,20 +253,47 @@ function switchClass(target, classOne, classTwo) {
   addTransition(target, .5);
 }
 
+//function to delete a post assigned to an email
+function deletePost(target, time) {
 
-// ------------------------------------------
-//  EVENT LISTENERS
-// ------------------------------------------
+  //remove the div containing the stored item
+  let number = target.substring(7);
+  let $parent = $(`#stored-outer-${number}`);
+  $parent.fadeOut(time);
+  setTimeout(function() {
+    $parent.remove();
+  }, time)
 
-$dropdown.on('change', function() {
-  //when the dropdown selection is changed, change the 
-  //currentEmailIndex to the correct value
+  //replace the Email in the email list array with ''
+  //Cannot simply remove as other things rely on its length
+  emailList[Number(number)].value = ''; 
+  emailList[Number(number)].Urls = [];
+
+  //remove dropdown option 
+  $(`#option-${number}`).remove();
+
+  if ($dropdown.children().length == 0) {
+    $dropdown.append(`
+      <option value="" disabled selected hidden>Choose an email...</option>
+    `);
+    $storeBtn.addClass('greyed');
+  }
+
+  resizeHeader();
+}
+
+function updateEmailIndex() {
   for (let j=0; j<emailList.length; j++) {
     if (emailList[j].value === $dropdown.val()) {
       currentEmailIndex = j;
     }
   }
-})
+}
+
+
+// ------------------------------------------
+//  EVENT LISTENERS
+// ------------------------------------------
 
 $storeBtn.click(function() {
   if (!loading && !storing && !$storeBtn.hasClass('greyed')) {
@@ -250,6 +301,20 @@ $storeBtn.click(function() {
   } else if ($storeBtn.hasClass('greyed')) {
     $('#no-email').css('display', 'block');
   }
+  $(`#delete-${currentEmailIndex}`).click(function(e) {
+    deletePost(e.target.id, 200);
+  })
+  $(`#edit-${currentEmailIndex}`).click(function(e) {
+    let number = e.target.id.substring(5);
+    if ($(`#delete-${number}`).parent().css('display') == 'none') {
+      $(`#delete-${number}`).parent().slideDown(100);
+      editMenu = true;
+    } else {
+      $(`#delete-${number}`).parent().slideUp(100);
+      editMenu = false;
+    }
+    
+  })
 })
 
 $emailBtn.click(function() {
@@ -304,9 +369,7 @@ $(window).resize(function(){
   }
 })
 
-$('.delete-post').click(function(e) {
-  console.log('hello');
-})
+
 
 // ------------------------------------------
 //  CLASSES

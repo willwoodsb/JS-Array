@@ -1,16 +1,19 @@
 .edit-menu {
     position: absolute;
-    top: 26px;
-    right: -2px;
+    top: 30px;
+    right: 5px;
     padding: 5px 10px;
     z-index: 10;
     border-radius: 3px;
+    box-shadow: none;
+    margin: 0;
     &:hover {
         cursor: pointer;
     }
     button {
         margin: 5px 0;
         background: none;
+        border: none;
     }
     background-color: $theme;
     color: $white;
@@ -19,4 +22,5 @@
         height: 1px;
         background-color: rgba(255, 255, 255, .4);
     }
+    display: none;
 }

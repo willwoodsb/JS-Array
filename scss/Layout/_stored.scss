@@ -3,13 +3,13 @@
 // --------------------------------------------------------------------------
 .theme {
     &-light {
-        &:not(h1, p, span) {
+        &:not(h1, p, span, .edit-menu) {
             background-color: $white;
         }
         color: $theme;
     }
     &-dark {
-        &:not(h1, p, span) {
+        &:not(h1, p, span, .edit-menu) {
             background-color: $theme;
         }
         color: $white;
