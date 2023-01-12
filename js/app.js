@@ -213,6 +213,9 @@ function createStoreDiv(emailIndex, theme) {
   resizeHeader();
 }
 
+
+//resize header function
+
 let prevStored = 0;
 function resizeHeader() {
   let widthClass;
@@ -224,15 +227,16 @@ function resizeHeader() {
     widthClass = 'width-2';
   }
   let time = 0;
+  console.log($('#stored-grid-inner').children().length);
   if (prevStored >= $('#stored-grid-inner').children().length) {
     time = 200;
   }
   setTimeout(function() {
     if ($('#stored-grid-inner').children().length <= 1) {
       $('#h2, #stored-grid-inner').removeClass(`${widthClass}`).addClass('width-1');
-    } else if ($dropdown.children().length == 2) {
+    } else if ($('#stored-grid-inner').children().length == 2) {
       $('#h2, #stored-grid-inner').removeClass(`${widthClass}`).addClass('width-2');
-    } else if ($dropdown.children().length >= 3) {
+    } else if ($('#stored-grid-inner').children().length >= 3) {
       $('#h2, #stored-grid-inner').removeClass(`${widthClass}`).addClass('width');
     }
   }, time)
@@ -240,6 +244,8 @@ function resizeHeader() {
     prevStored = $('#stored-grid-inner').children().length;
   }, 210)
 }
+
+
 
 function addTransition(target, time) {
   $(target).css('transition', `${time}s ease`);
@@ -298,23 +304,24 @@ function updateEmailIndex() {
 $storeBtn.click(function() {
   if (!loading && !storing && !$storeBtn.hasClass('greyed')) {
     storeImage();
-  } else if ($storeBtn.hasClass('greyed')) {
-    $('#no-email').css('display', 'block');
+  } 
+  if (emailList[currentEmailIndex].Urls.length === 1) {
+    $(`#delete-${currentEmailIndex}`).click(function(e) {
+      deletePost(e.target.id, 200);
+    })
+    $(`#edit-${currentEmailIndex}`).click(function(e) {
+      let number = e.target.id.substring(5);
+      if ($(`#delete-${number}`).parent().css('display') == 'none') {
+        $(`#delete-${number}`).parent().slideDown(100);
+        editMenu = true;
+      } else {
+        $(`#delete-${number}`).parent().slideUp(100);
+        editMenu = false;
+      }
+      
+    })
   }
-  $(`#delete-${currentEmailIndex}`).click(function(e) {
-    deletePost(e.target.id, 200);
-  })
-  $(`#edit-${currentEmailIndex}`).click(function(e) {
-    let number = e.target.id.substring(5);
-    if ($(`#delete-${number}`).parent().css('display') == 'none') {
-      $(`#delete-${number}`).parent().slideDown(100);
-      editMenu = true;
-    } else {
-      $(`#delete-${number}`).parent().slideUp(100);
-      editMenu = false;
-    }
-    
-  })
+  
 })
 
 $emailBtn.click(function() {
