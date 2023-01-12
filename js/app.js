@@ -153,8 +153,8 @@ function createEmail(userInput) {
   } else {
     //check if submission is a duplicate
     let emailDuplicate = false;
-    for (let j=0; j < emailList.length + 1; j++) {
-      if (userInput == emailList[j]) {
+    for (let j=0; j < emailList.length; j++) {
+      if (emailList[j].value == userInput) {
         emailDuplicate = true;
       }
     }
@@ -189,16 +189,21 @@ function addEmail(userInput) {
 function createStoreDiv(emailIndex, theme) {
   let themeClass;
   if (!theme) {
-    themeClass = 'theme-light';
+    themeClass = 'light';
   } else {
-    themeClass = 'theme-dark';
+    themeClass = 'dark';
   }
   //create html 
   $('#stored-grid-inner').prepend(`
-    <div class="stored theme ${themeClass}">
+    <div class="stored theme theme-${themeClass}" id="stored-outer-${emailIndex}">
       <p><span class="icon"></span>${emailList[emailIndex].value}</p>
-      <button type="button" class="edit">...</button>
+      <button type="button" class="edit" id="edit-${emailIndex}">...</button>
       <div class="owl-carousel" id="stored-${emailIndex}"></div>
+      <div class="edit-menu theme">
+        <button type="button" class="delete-post" id="delete-${emailIndex}">Delete post</button>
+        <div class="line"></div>
+        <p class="edit-post" id="edit-post-${emailIndex}">Edit post</p>
+      </div>
     </div>
   `);
   //initialise owl-carousel
@@ -219,12 +224,8 @@ function addTransition(target, time) {
   }, (time* 1000));
 }
 
-function toDark(target, lightClass, darkClass) {
-  $(target).removeClass(lightClass).addClass(darkClass);
-  addTransition(target, .5);
-}
-function toLight(target, lightClass, darkClass) {
-  $(target).removeClass(darkClass).addClass(lightClass);
+function switchClass(target, classOne, classTwo) {
+  $(target).removeClass(classOne).addClass(classTwo);
   addTransition(target, .5);
 }
 
@@ -263,14 +264,49 @@ $('.switch').change(function() {
   setTimeout(function() {
     dark = $('#checkbox').is(':checked');
     if (dark) {
-      toDark('body', 'background-light', 'background-dark');
-      toDark('.theme, h1, .icon', 'theme-light', 'theme-dark');
+      switchClass('body', 'background-light', 'background-dark');
+      switchClass('.theme, h1, .icon', 'theme-light', 'theme-dark');
     } else {
-      toLight(`body`, `background-light`, `background-dark`);
-      toLight('.theme, h1, .icon', 'theme-light', 'theme-dark');
+      switchClass(`body`, `background-dark`, `background-light`);
+      switchClass('.theme, h1, .icon', 'theme-dark', 'theme-light');
     }
   }, 10);
 });
+
+let ham = false;
+
+$('#hamburger button').click(function() {
+  if ($(window).width() <= 737) {
+    if (ham == false) {
+
+      $('.img-select').slideUp(300);
+      switchClass('#hamburger .icon', 'minus', 'plus');
+      setTimeout(function() {
+        $('#hamburger button p').show('slide', {direction: 'right'}, 100);
+      }, 200)
+      ham = true;
+    } else {
+      $('.img-select').slideDown(300);
+      switchClass('#hamburger .icon', 'plus', 'minus');
+      $('#hamburger button p').hide(0);
+      ham = false;
+    }
+  }
+});
+
+$(window).resize(function(){
+  if ($(window).width() >= 737 && ham == true) {
+    $('.img-select').css('display', '');
+    switchClass('#hamburger .icon', 'plus', 'minus');
+    ham = false;
+  } else if ($(window).width() >= 737) {
+    $('#hamburger button p').css('display', '')
+  }
+})
+
+$('.delete-post').click(function(e) {
+  console.log('hello');
+})
 
 // ------------------------------------------
 //  CLASSES

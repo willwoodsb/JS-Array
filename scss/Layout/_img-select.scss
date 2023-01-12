@@ -2,12 +2,48 @@
 // img-select ---------------------------------------------------------------
 // --------------------------------------------------------------------------
 
+#hamburger {
+    width: 340px;
+    height: 34px;
+    span {
+        transform: translate(0, 3px);
+    }
+    text-align: left;
+    .minus::before {
+        content: "\ea0b";
+    }
+    .plus::before {
+        content: "\ea0a";
+    }
+    border: none;
+    padding-top: 3px;
+    @include auto-mg-hor;
+    button {
+        background: none;
+        border: none;
+        @include flex-row;
+        p {
+            margin: 0 8px;
+            display: none;
+            transition: .5s ease;
+            font-weight: 700;
+        }
+    }
+    @include mq(large) {
+        display: none;
+    }
+}
+
+
 .img-select {
     &-outer {
         width: 100%;
         margin-bottom: 0!important;
     }
     padding: 20px;
+    @media screen and (max-width: ($brkpoint-lg - 1)) {
+        padding-top: 0;
+    }
     @include flex-col;
     width: $width + 40;
     @include auto-mg-hor;

@@ -36,7 +36,7 @@
     }
 }
 
-@media screen and (max-width: $brkpoint-lg) {
+@media screen and (max-width: ($brkpoint-lg - 1)) {
     #h2 {
         display: none;
     }
