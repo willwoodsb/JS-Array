@@ -56,6 +56,7 @@
         height: 35px;
         @include flex-row;
         justify-content: space-between;
+        color: $theme!important;
         input[type=email], select {
             width: 190px;
         }

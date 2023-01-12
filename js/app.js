@@ -227,7 +227,6 @@ function resizeHeader() {
     widthClass = 'width-2';
   }
   let time = 0;
-  console.log($('#stored-grid-inner').children().length);
   if (prevStored >= $('#stored-grid-inner').children().length) {
     time = 200;
   }

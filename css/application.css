@@ -367,7 +367,8 @@ h1 {
     height: 35px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between; }
+    justify-content: space-between;
+    color: #13161b !important; }
     .img-select #drop-form input[type=email], .img-select #drop-form select, .img-select #input-email input[type=email], .img-select #input-email select {
       width: 190px; }
     .img-select #drop-form:first-child, .img-select #input-email:first-child {
