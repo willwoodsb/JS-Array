@@ -121,7 +121,6 @@ function storeImage() {
   updateEmailIndex();
   $(`#img_${i}`).fadeOut(200);
   storing = true;
-
   //if the selected email is new, create a div for it 
   if (emailList[currentEmailIndex].Urls.length === 0) {
     createStoreDiv(currentEmailIndex, dark);
@@ -144,6 +143,7 @@ function storeImage() {
       $('.owl-dots').removeClass('disabled');
     }, 350);
   }, 200);
+  
 }
 
 //validate the email submission (against regex and previous submission)
@@ -217,6 +217,7 @@ function createStoreDiv(emailIndex, theme) {
 //resize header function
 
 let prevStored = 0;
+
 function resizeHeader() {
   let widthClass;
   if ($('#h2').hasClass('width')) {
@@ -228,9 +229,12 @@ function resizeHeader() {
   }
   let time = 0;
   if (prevStored >= $('#stored-grid-inner').children().length) {
-    time = 200;
+    time = 250;
   }
   setTimeout(function() {
+    if (time == 250) {
+      addTransition('#stored-grid-inner', .25);
+    }
     if ($('#stored-grid-inner').children().length <= 1) {
       $('#h2, #stored-grid-inner').removeClass(`${widthClass}`).addClass('width-1');
     } else if ($('#stored-grid-inner').children().length == 2) {
@@ -241,7 +245,7 @@ function resizeHeader() {
   }, time)
   setTimeout(function() {
     prevStored = $('#stored-grid-inner').children().length;
-  }, 210)
+  }, time)
 }
 
 
