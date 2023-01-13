@@ -1,0 +1,22 @@
+
+
+.placeholder {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 360px;
+        p {
+            @extend %img-center;
+            margin: 0;
+            font-size: 20px;
+            color: $grey;
+        }
+}
+
+.placeholder-view {
+    @include mq(large) {
+        display: block;
+    }
+}

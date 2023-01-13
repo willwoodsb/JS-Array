@@ -286,6 +286,7 @@ function deletePost(target, time) {
       <option value="" disabled selected hidden>Choose an email...</option>
     `);
     $storeBtn.addClass('greyed');
+    $('.placeholder').addClass('placeholder-view');
   }
 
   resizeHeader();
@@ -305,6 +306,9 @@ function updateEmailIndex() {
 // ------------------------------------------
 
 $storeBtn.click(function() {
+  if ($('.placeholder').hasClass('placeholder-view')) {
+    $('.placeholder').removeClass('placeholder-view');
+  } 
   if (!loading && !storing && !$storeBtn.hasClass('greyed')) {
     storeImage();
   } 
