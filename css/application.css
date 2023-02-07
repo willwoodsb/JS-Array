@@ -337,11 +337,12 @@ h1 {
     border: none;
     display: flex;
     flex-direction: row; }
-    #hamburger button p {
+    #hamburger button #new-photo-txt {
       margin: 0 8px;
       display: none;
       transition: .5s ease;
-      font-weight: 700; }
+      font-weight: 700;
+      transform: translate(0, 0px); }
   @media screen and (min-width: 737px) {
     #hamburger {
       display: none; } }
@@ -393,6 +394,12 @@ h1 {
       background-color: #f41f2a; }
       .img-select button#store-button:hover, .img-select input[type=submit]#store-button:hover {
         background-color: #d50b15; }
+  .img-select #skip-img {
+    width: 100%;
+    margin-top: 10px;
+    background-color: #b8b8b8; }
+    .img-select #skip-img:hover {
+      background-color: #ababab; }
 
 @media screen and (min-width: 737px) {
   .img-select-outer {
@@ -474,11 +481,13 @@ h1 {
       margin: 0 10px; }
 
 #h1 {
-  transform: translate(0, -1px); }
+  transform: translate(0, -1px);
+  padding: 0 10px; }
   #h1 h1 {
     width: 340px;
     margin-left: auto;
-    margin-right: auto; }
+    margin-right: auto;
+    transform: translate(8px, 0); }
 
 @media screen and (min-width: 737px) {
   #h1 {

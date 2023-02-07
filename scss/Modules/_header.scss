@@ -22,9 +22,11 @@
 
 #h1 {
     transform: translate(0, -1px);
+    padding: 0 10px;
     & h1 {
         width: 340px;
         @include auto-mg-hor;
+        transform: translate(8px, 0);
     }
 }
     

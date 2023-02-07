@@ -179,11 +179,12 @@ function createEmail(userInput) {
 //function to add an email to the dropdown menu
 function addEmail(userInput) {
   $dropdown.prepend(`
-    <option id="option-${emailList.length}">${userInput}</option>
+    <option value="${userInput}" id="option-${emailList.length}">${userInput}</option>
   `)
   if($storeBtn.hasClass('greyed')) {
     $storeBtn.removeClass('greyed');
   }
+  $dropdown.val(userInput);
 }
 
 //function to create a new div for each new email
@@ -242,10 +243,10 @@ function resizeHeader() {
     } else if ($('#stored-grid-inner').children().length >= 3) {
       $('#h2, #stored-grid-inner').removeClass(`${widthClass}`).addClass('width');
     }
-  }, time)
+  }, time);
   setTimeout(function() {
     prevStored = $('#stored-grid-inner').children().length;
-  }, time)
+  }, time);
 }
 
 
@@ -271,7 +272,7 @@ function deletePost(target, time) {
   $parent.fadeOut(time);
   setTimeout(function() {
     $parent.remove();
-  }, time)
+  }, time);
 
   //replace the Email in the email list array with ''
   //Cannot simply remove as other things rely on its length
@@ -361,13 +362,13 @@ $('#hamburger button').click(function() {
       $('.img-select').slideUp(300);
       switchClass('#hamburger .icon', 'minus', 'plus');
       setTimeout(function() {
-        $('#hamburger button p').show('slide', {direction: 'right'}, 100);
-      }, 200)
+        $('#new-photo-txt').show('slide', {direction: 'right'}, 100);
+      }, 200);
       ham = true;
     } else {
       $('.img-select').slideDown(300);
       switchClass('#hamburger .icon', 'plus', 'minus');
-      $('#hamburger button p').hide(0);
+      $('#new-photo-txt').hide(0);
       ham = false;
     }
   }
@@ -383,7 +384,14 @@ $(window).resize(function(){
   }
 })
 
-
+$('#skip-img').click(function() {
+  $(`#img_${i}`).fadeOut(200);
+  setTimeout(function() {
+    $(`#img_${i}`).remove();
+    i++;
+    fetchPic(width, height, i);
+  }, 200);
+})
 
 // ------------------------------------------
 //  CLASSES

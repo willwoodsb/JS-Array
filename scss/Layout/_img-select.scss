@@ -22,11 +22,12 @@
         background: none;
         border: none;
         @include flex-row;
-        p {
+        #new-photo-txt {
             margin: 0 8px;
             display: none;
             transition: .5s ease;
             font-weight: 700;
+            transform: translate(0, 0px);
         }
     }
     @include mq(large) {
@@ -90,6 +91,14 @@
         }
         color: white;
         padding:5px;
+    }
+    #skip-img {
+        width: 100%;
+        margin-top: 10px;
+        background-color: darken($white, 25%);
+        &:hover {
+            background-color: darken($white, 30%);
+        }
     }
 }
 
