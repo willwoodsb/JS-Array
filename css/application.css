@@ -1,4 +1,4 @@
-.lds-dual-ring, .error, .placeholder p {
+.lds-dual-ring, .error p, .placeholder p {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -433,6 +433,14 @@ h1 {
 
 .img-card img, .stored img {
   border-radius: 3px; }
+
+.error {
+  background-color: #f7f7f7;
+  height: 300px;
+  width: 300px;
+  position: absolute; }
+  .error-dark {
+    background-color: #13161b; }
 
 .email-invalid {
   display: none;

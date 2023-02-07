@@ -114,6 +114,7 @@ function generateErrorText(error, i) {
   $(`#img_${i}`).append(`
     <div class="error"><p>Sorry, something went wrong :(</p></div>
   `);
+  
 }
 
 //store an image
@@ -310,7 +311,7 @@ $storeBtn.click(function() {
   if ($('.placeholder').hasClass('placeholder-view')) {
     $('.placeholder').removeClass('placeholder-view');
   } 
-  if (!loading && !storing && !$storeBtn.hasClass('greyed')) {
+  if (!loading && !storing && !$storeBtn.hasClass('greyed') && !skipping) {
     storeImage();
   } 
   if (emailList[currentEmailIndex].Urls.length === 1) {
@@ -346,9 +347,13 @@ $('.switch').change(function() {
     if (dark) {
       switchClass('body', 'background-light', 'background-dark');
       switchClass('.theme, h1, .icon', 'theme-light', 'theme-dark');
+      $('.error').addClass('error-dark');
+      addTransition('.error-dark', .5);
     } else {
       switchClass(`body`, `background-dark`, `background-light`);
       switchClass('.theme, h1, .icon', 'theme-dark', 'theme-light');
+      $('.error').removeClass('error-dark');
+      addTransition('.error', .5);
     }
   }, 10);
 });
@@ -383,14 +388,18 @@ $(window).resize(function(){
     $('#hamburger button p').css('display', '')
   }
 })
-
+let skipping = false;
 $('#skip-img').click(function() {
-  $(`#img_${i}`).fadeOut(200);
-  setTimeout(function() {
-    $(`#img_${i}`).remove();
-    i++;
-    fetchPic(width, height, i);
-  }, 200);
+  if (!loading && !storing && !skipping) {
+    skipping = true;
+    $(`#img_${i}`).fadeOut(200);
+    setTimeout(function() {
+      $(`#img_${i}`).remove();
+      i++;
+      fetchPic(width, height, i);
+      skipping = false;
+    }, 200);
+  }
 })
 
 // ------------------------------------------

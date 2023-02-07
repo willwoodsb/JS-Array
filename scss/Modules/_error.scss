@@ -3,7 +3,16 @@
 // --------------------------------------------------------------------------
 
 .error {
-    @extend %img-center;
+    background-color: $white;
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    p {
+        @extend %img-center;
+    }
+    &-dark {
+        background-color: $theme;
+    }
 }
 
 .email-invalid {
